@@ -1,0 +1,5 @@
+check process apache2
+  with pidfile /var/vcap/sys/run/apache2/httpd.pid
+  start program "/var/vcap/jobs/apache2/bin/wordpress_ctl start" with timeout 60 seconds
+  stop program "/var/vcap/jobs/apache2/bin/wordpress_ctl stop" with timeout 60 seconds
+  group vcap

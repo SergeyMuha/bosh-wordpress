@@ -1,0 +1,15 @@
+---
+name: apache2
+
+templates:
+  wordpress_ctl:      bin/wordpress_ctl
+  httpd.conf.erb:     config/httpd.conf
+  test.html.erb:      htdocs/index.html
+
+packages:
+  - apache2
+
+properties:
+  wordpress.port:
+    description: TCP port wordpress server listen on
+    default: 80

@@ -1,0 +1,30 @@
+name: wordpress
+
+releases:
+- name: apache2-bosh
+  version: latest
+
+stemcells:
+- alias: default
+  os: ubuntu-trusty
+  version: latest
+
+update:
+  canaries: 1
+  max_in_flight: 1
+  canary_watch_time: 5000-60000
+  update_watch_time: 5000-60000
+
+instance_groups:
+- name: apache2-bosh
+  azs: [z1]
+  instances: 1
+  jobs:
+  - name: apache2
+    release: apache2-bosh
+    properties: {}
+  vm_type: default
+  stemcell: default
+  persistent_disk: 0
+  networks:
+  - name: aws
